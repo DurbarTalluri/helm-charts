@@ -11,4 +11,15 @@ entries:
     urls:
     - https://github.com/DurbarTalluri/helm-charts/releases/download/mychart-1.0.0/mychart-1.0.0.tgz
     version: 1.0.0
-generated: "2025-03-26T06:20:36.488147027Z"
+  site24x7-operator:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2025-03-26T06:55:40.803636978Z"
+    description: A Helm chart for Site24x7 Kubernetes Operator
+    digest: 86831653c0ccaa419becef27f09d22eb8cbbf6cde16add28a4c6d66a876e22fc
+    name: site24x7-operator
+    type: application
+    urls:
+    - https://github.com/DurbarTalluri/helm-charts/releases/download/site24x7-operator-1.0.0/site24x7-operator-1.0.0.tgz
+    version: 1.0.0
+generated: "2025-03-26T06:55:40.803641456Z"
