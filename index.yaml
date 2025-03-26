@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  mychart:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2025-03-26T06:20:36.488141677Z"
+    description: A Helm chart for Site24x7 Kubernetes Operator
+    digest: ab3e286c382df5f6256455cc340d61523e8e8b8702c08c16a26334b3e3daa8de
+    name: mychart
+    type: application
+    urls:
+    - https://github.com/DurbarTalluri/helm-charts/releases/download/mychart-1.0.0/mychart-1.0.0.tgz
+    version: 1.0.0
+generated: "2025-03-26T06:20:36.488147027Z"
