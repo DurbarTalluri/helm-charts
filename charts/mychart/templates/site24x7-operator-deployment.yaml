@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.operator.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: site24x7-operator
+spec:
+  replicas: {{ .Values.operator.replicas }}
+  selector:
+    matchLabels:
+      app: site24x7-operator
+  strategy:
+    type: {{ .Values.operator.updateStrategy.type }}
+  template:
+    metadata:
+      labels:
+        app: site24x7-operator
+    spec:
+      nodeSelector:
+        kubernetes.io/os: linux
+      serviceAccountName: {{ .Values.operator.serviceAcctName }}
+      containers:
+      - name: {{ .Values.operator.operatorContainer.name }}
+        image: {{ printf "%s:%s" .Values.operator.operatorContainer.imageRef.repository .Values.operator.operatorContainer.imageRef.tag }}
+        securityContext:
+          {{- toYaml .Values.operator.operatorContainer.securityContext | nindent 10 }}
+        # IfNotPresent
+        imagePullPolicy: {{ .Values.operator.operatorContainer.imageRef.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.operator.operatorContainer.ports.tlsPortNum }}
+          name: tls
+        - containerPort: {{ .Values.operator.operatorContainer.ports.metricsPortNum }}
+          name: metrics
+        resources:
+          {{- toYaml .Values.operator.operatorContainer.resources | nindent 10 }}
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8081
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 8081
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          

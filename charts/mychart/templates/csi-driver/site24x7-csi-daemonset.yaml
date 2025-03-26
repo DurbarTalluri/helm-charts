@@ -1,0 +1,97 @@
+{{- if .Values.enableApm }}
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: {{ .Values.csiDriver.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: csi-driver
+spec:
+  selector:
+    matchLabels:
+      name: csi-driver
+  template:
+    metadata:
+      labels:
+        name: csi-driver
+    spec:
+      serviceAccountName: {{ .Values.csiDriver.serviceAcctName }}
+      containers:
+      # it may be desirable to set a high priority class to ensure that a DaemonSet Pod
+      # preempts running Pods
+      # priorityClassName: important
+      - name: {{ .Values.csiDriver.csiServerContainer.name }}
+        image: {{ printf "%s:%s" .Values.csiDriver.csiServerContainer.imageRef.repository .Values.csiDriver.csiServerContainer.imageRef.tag }}
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8091
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        imagePullPolicy: {{ .Values.csiDriver.csiServerContainer.imageRef.pullPolicy }}
+        args: 
+          {{- toYaml .Values.csiDriver.csiServerContainer.args | nindent 10 }}
+        securityContext:
+          {{- toYaml .Values.csiDriver.csiServerContainer.securityContext | nindent 10 }}
+        resources:
+          {{- toYaml .Values.csiDriver.csiServerContainer.resources | nindent 10 }}
+        volumeMounts:
+        - name: agent-binary-volume
+          mountPath: /site24x7
+          mountPropagation: Bidirectional
+        - name: plugin-dir
+          mountPath: /csi
+        - name: mountpoint-dir
+          mountPath: /var/lib/kubelet/pods 
+          mountPropagation: Bidirectional
+      - name: {{ .Values.csiDriver.csiProvisionerContainer.name }}
+        image: {{ printf "%s:%s" .Values.csiDriver.csiProvisionerContainer.imageRef.repository .Values.csiDriver.csiProvisionerContainer.imageRef.tag }}
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8081
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        imagePullPolicy: {{ .Values.csiDriver.csiProvisionerContainer.imageRef.pullPolicy }}
+        args: 
+          {{- toYaml .Values.csiDriver.csiProvisionerContainer.args | nindent 10 }}
+        securityContext:
+          {{- toYaml .Values.csiDriver.csiProvisionerContainer.securityContext | nindent 10 }}
+        resources:
+          {{- toYaml .Values.csiDriver.csiProvisionerContainer.resources | nindent 10 }}
+        volumeMounts:
+        - name: agent-binary-volume
+          mountPath: /site24x7
+          mountPropagation: Bidirectional
+      - name: csi-node-driver-registrar
+        image: registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.5.0
+        args:
+          - --csi-address=/csi/csi.sock
+          - --kubelet-registration-path=/var/lib/kubelet/plugins/site24x7-csi-driver/csi.sock
+        volumeMounts:
+          - name: plugin-dir
+            mountPath: /csi
+          - name: registration-dir
+            mountPath: /registration
+      # it may be desirable to set a high priority class to ensure that a DaemonSet Pod
+      # preempts running Pods
+      # priorityClassName: important
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: agent-binary-volume
+        hostPath:
+          path: /site24x7
+          type: DirectoryOrCreate
+      - name: plugin-dir
+        hostPath:
+          path: /var/lib/kubelet/plugins/site24x7-csi-driver
+          type: DirectoryOrCreate
+      - name: registration-dir
+        hostPath:
+          path: /var/lib/kubelet/plugins_registry
+          type: Directory
+      - name: mountpoint-dir
+        hostPath:
+          path: /var/lib/kubelet/pods
+          type: DirectoryOrCreate
+{{- end }}
