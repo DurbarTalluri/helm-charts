@@ -51,7 +51,13 @@ spec:
                         type: string
                       KUBE_STATE_METRICS_URL:
                         type: string
-                      cluster_name:
+                      site24x7_cluster_name:
+                        type: string
+                      site24x7_agent_image:
+                        type: string
+                      site24x7_kube_state_metrics_image:
+                        type: string
+                      site24x7_cluster_agent_image:
                         type: string
                       enabled:
                         description: Enable this to enable Kubernetes Monitoring.
