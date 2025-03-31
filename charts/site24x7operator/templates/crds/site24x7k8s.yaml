@@ -79,6 +79,8 @@ spec:
                       https_proxy:
                         type: string
                     type: object
+                  namespace:
+                    type: string
                 type: object
             type: object
           status:
