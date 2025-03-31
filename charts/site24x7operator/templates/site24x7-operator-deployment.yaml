@@ -23,6 +23,9 @@ spec:
       containers:
       - name: {{ .Values.operator.operatorContainer.name }}
         image: {{ printf "%s:%s" .Values.operator.operatorContainer.imageRef.repository .Values.operator.operatorContainer.imageRef.tag }}
+        args:
+          - operator
+          - {{ printf "namespace=%s" .Values.namespace }}
         securityContext:
           {{- toYaml .Values.operator.operatorContainer.securityContext | nindent 10 }}
         # IfNotPresent
