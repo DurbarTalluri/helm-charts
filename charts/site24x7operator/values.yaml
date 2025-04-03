@@ -35,10 +35,10 @@ operator:
     resources:
       requests:
         cpu: 100m
-        memory: 64Mi
+        memory: 50Mi
       limits:
-        cpu: 200m
-        memory: 128Mi
+        cpu: 300m
+        memory: 150Mi
 
 operatorService:
   name: "site24x7-operator"
@@ -66,11 +66,12 @@ csiDriver:
       privileged: true # Needed for mountPropagation
       allowPrivilegeEscalation: true # Needed for privileged
     resources:
-      limits:
-        memory: 200Mi
       requests:
+        cpu: 50m
+        memory: 50Mi
+      limits:
         cpu: 100m
-        memory: 200Mi
+        memory: 100Mi
   csiProvisionerContainer:
     name: "site24x7-csi-provisioner"
     imageRef:
@@ -87,10 +88,8 @@ csiDriver:
       privileged: true # Needed for mountPropagation
       allowPrivilegeEscalation: true # Needed for privileged
     resources:
-      limits:
-        memory: 200Mi
       requests:
-        cpu: 100m
+        cpu: 200m
         memory: 200Mi
 
 csiRegistrar:
