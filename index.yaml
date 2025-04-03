@@ -14,6 +14,16 @@ entries:
   site24x7-operator:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2025-04-03T12:30:24.653074884Z"
+    description: A Helm chart for Site24x7 Kubernetes Operator
+    digest: 6593de177b3ae34ad7b6918f70b4da5a578ce3e25f80ba5e2da4875a69d995b2
+    name: site24x7-operator
+    type: application
+    urls:
+    - https://github.com/DurbarTalluri/helm-charts/releases/download/site24x7-operator-1.0.5/site24x7-operator-1.0.5.tgz
+    version: 1.0.5
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2025-03-31T05:19:39.019454126Z"
     description: A Helm chart for Site24x7 Kubernetes Operator
     digest: ff8ec2a6d81a94f2cee89f3756820e344e3fe2b7450f2acc64f0754fc049d81b
@@ -62,4 +72,4 @@ entries:
     urls:
     - https://github.com/DurbarTalluri/helm-charts/releases/download/site24x7-operator-1.0.0/site24x7-operator-1.0.0.tgz
     version: 1.0.0
-generated: "2025-03-31T05:19:39.019474995Z"
+generated: "2025-04-03T12:30:24.65314222Z"
