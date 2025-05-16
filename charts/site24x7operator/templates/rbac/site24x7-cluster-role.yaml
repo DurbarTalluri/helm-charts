@@ -57,6 +57,18 @@ rules:
       - create
       - update
       - delete
+# For all site24x7
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - delete
   - apiGroups:
       - ""
     resources:
