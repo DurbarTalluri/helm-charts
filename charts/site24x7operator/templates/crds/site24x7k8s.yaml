@@ -62,6 +62,292 @@ spec:
                       enabled:
                         description: Enable this to enable Kubernetes Monitoring.
                         type: boolean
+                      name_override:
+                        type: string
+                      fullname_override:
+                        type: string
+                      device_key:
+                        type: string
+                      cluster_name:
+                        type: string
+                      open_shift:
+                        type: boolean
+                      gke_auto_pilot:
+                        type: boolean
+                      http_proxy:
+                        type: string
+                      https_proxy:
+                        type: string
+                      site24x7_agent:
+                        type: object
+                        properties:
+                          create:
+                            type: boolean
+                          annotations:
+                            type: object
+                            additionalProperties:
+                              type: string
+                          update_strategy:
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                              rollingUpdate:
+                                type: object
+                                properties:
+                                  maxUnavailable:
+                                    type: string
+                          node_selector:
+                            type: object
+                            additionalProperties:
+                              type: string
+                          tolerations:
+                            type: array
+                            items:
+                              type: object
+                          security_context:
+                            type: object
+                            additionalProperties:
+                              type: string
+                          apply_non_root_security_context:
+                            type: boolean
+                          apply_default_toleration:
+                            type: boolean
+                          image:
+                            type: object
+                            properties:
+                              repository:
+                                type: string
+                              name:
+                                type: string
+                              pull_policy:
+                                type: string
+                              tag:
+                                type: string
+                              image_pull_secrets:
+                                type: array
+                                items:
+                                  type: string
+                          resources:
+                            type: object
+                            properties:
+                              limits:
+                                type: object
+                                properties:
+                                  memory:
+                                    type: string
+                          installer_name:
+                            type: string
+                          extra_env:
+                            type: array
+                            items:
+                              type: object
+                          apply_priority_class:
+                            type: boolean
+                          priority_class_value:
+                            type: integer
+                      site24x7_kube_state_metrics:
+                        type: object
+                        properties:
+                          create:
+                            type: boolean
+                          annotations:
+                            type: object
+                            additionalProperties:
+                              type: string
+                          update_strategy:
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                              rollingUpdate:
+                                type: object
+                                properties:
+                                  maxUnavailable:
+                                    type: string
+                          node_selector:
+                            type: object
+                            additionalProperties:
+                              type: string
+                          tolerations:
+                            type: array
+                            items:
+                              type: object
+                          security_context:
+                            type: object
+                            additionalProperties:
+                              type: string
+                          replicas:
+                            type: integer
+                          apply_default_toleration:
+                            type: boolean
+                          image:
+                            type: object
+                            properties:
+                              repository:
+                                type: string
+                              name:
+                                type: string
+                              pull_policy:
+                                type: string
+                              tag:
+                                type: string
+                              image_pull_secrets:
+                                type: array
+                                items:
+                                  type: string
+                          resources:
+                            type: object
+                            properties:
+                              requests:
+                                type: object
+                                properties:
+                                  cpu:
+                                    type: string
+                                  memory:
+                                    type: string
+                              limits:
+                                type: object
+                                properties:
+                                  cpu:
+                                    type: string
+                                  memory:
+                                    type: string
+                          apply_priority_class:
+                            type: boolean
+                          priority_class_value:
+                            type: integer
+                      site24x7_cluster_agent:
+                        type: object
+                        properties:
+                          create:
+                            type: boolean
+                          replicas:
+                            type: integer
+                          annotations:
+                            type: object
+                            additionalProperties:
+                              type: string
+                          update_strategy:
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                              rollingUpdate:
+                                type: object
+                                properties:
+                                  maxUnavailable:
+                                    type: string
+                          node_selector:
+                            type: object
+                            additionalProperties:
+                              type: string
+                          tolerations:
+                            type: array
+                            items:
+                              type: object
+                          security_context:
+                            type: object
+                            additionalProperties:
+                              type: string
+                          apply_default_toleration:
+                            type: boolean
+                          image:
+                            type: object
+                            properties:
+                              repository:
+                                type: string
+                              name:
+                                type: string
+                              tag:
+                                type: string
+                              pull_policy:
+                                type: string
+                              image_pull_secrets:
+                                type: array
+                                items:
+                                  type: string
+                          resources:
+                            type: object
+                            properties:
+                              limits:
+                                type: object
+                                properties:
+                                  cpu:
+                                    type: string
+                                  memory:
+                                    type: string
+                          extra_env:
+                            type: array
+                            items:
+                              type: object
+                          apply_priority_class:
+                            type: boolean
+                          priority_class_value:
+                            type: integer
+                          liveness_probe:
+                            type: object
+                            additionalProperties:
+                              type: string
+                          readiness_probe:
+                            type: object
+                            additionalProperties:
+                              type: string
+                      service_account:
+                        type: object
+                        properties:
+                          create:
+                            type: boolean
+                          annotations:
+                            type: object
+                            additionalProperties:
+                              type: string
+                          name:
+                            type: string
+                      site24x7_config_map:
+                        type: object
+                        properties:
+                          create:
+                            type: boolean
+                          node_agent_version:
+                            type: string
+                          cluster_agent_version:
+                            type: string
+                          one_min:
+                            type: object
+                            properties:
+                              pods:
+                                type: string
+                              nodes:
+                                type: string
+                              namespaces:
+                                type: string
+                              horizontal_pod_autoscalers:
+                                type: string
+                              daemon_sets:
+                                type: string
+                              deployments:
+                                type: string
+                              endpoints:
+                                type: string
+                              replica_sets:
+                                type: string
+                              stateful_sets:
+                                type: string
+                              services:
+                                type: string
+                              pv:
+                                type: string
+                              persistent_volume_claims:
+                                type: string
+                              jobs:
+                                type: string
+                              ingresses:
+                                type: string
+                          settings:
+                            type: object
+                            additionalProperties:
+                              type: string
                     type: object
                   apm:
                     properties:
@@ -71,6 +357,27 @@ spec:
                       exporter:
                         description: Fill this to mention the Scope of exporter
                         type: string
+                      monitor_all_pods:
+                        description: Monitor all pods in the cluster for APM.
+                        type: boolean
+                      include_app_labels:
+                        description: Include the application labels per namespace to be monitored by APM.
+                        type: object
+                        additionalProperties:
+                          type: array
+                          items:
+                            type: object
+                            additionalProperties:
+                              type: string
+                      exclude_app_labels:
+                        description: Exclude the application labels per namespace to be monitored by APM.
+                        type: object
+                        additionalProperties:
+                          type: array
+                          items:
+                            type: object
+                            additionalProperties:
+                              type: string
                     type: object
                   proxy:
                     properties:
@@ -81,11 +388,19 @@ spec:
                     type: object
                   namespace:
                     type: string
+                  apply_tolerations:
+                    type: boolean
+                  resource_base_name:
+                    type: string
                 type: object
             type: object
           status:
             description: Site24x7K8sStatus defines the observed state of Site24x7K8s
             type: object
+            properties:
+              ObservedGeneration:
+                type: integer
+                format: int64
         type: object
     served: true
     storage: true

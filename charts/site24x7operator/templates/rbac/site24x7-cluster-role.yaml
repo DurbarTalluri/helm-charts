@@ -57,7 +57,6 @@ rules:
       - create
       - update
       - delete
-# For all site24x7
   - apiGroups:
       - ""
     resources:
@@ -69,6 +68,7 @@ rules:
       - create
       - update
       - delete
+      - patch
   - apiGroups:
       - ""
     resources:
@@ -90,6 +90,7 @@ rules:
       - delete
       - escalate
       - bind
+      - patch
   # For APM 
   - apiGroups:
       - admissionregistration.k8s.io
@@ -104,6 +105,7 @@ rules:
       - "watch"
       - "update"
       - "delete"
+      - patch
   # For APM 
   - apiGroups:
       - admissionregistration.k8s.io
@@ -141,6 +143,7 @@ rules:
       - create
       - update
       - delete
+      - patch
   - apiGroups:
       - site24x7.com
     resources:
@@ -150,6 +153,15 @@ rules:
       - list
       - watch
       - update
+      - patch
+  - apiGroups: 
+      - "site24x7.com"
+    resources: 
+      - "site24x7k8s/status"
+    verbs:
+      - "get"
+      - "update"
+      - "patch"
   - apiGroups:
       - ""
     resources:
@@ -161,6 +173,7 @@ rules:
       - create
       - update
       - delete
+      - patch
   - apiGroups:
       - apps
     resources:
@@ -172,6 +185,7 @@ rules:
       - create
       - update
       - delete
+      - patch
   - apiGroups:
       - apps
     resources:
@@ -184,6 +198,7 @@ rules:
       - create
       - update
       - delete
+      - patch
   - apiGroups:
       - storage.k8s.io
     resources:
@@ -195,3 +210,17 @@ rules:
       - create
       - update
       - delete
+      - patch
+  # For PriorityClass creation (if enabled)    
+  - apiGroups:
+      - scheduling.k8s.io
+    resources:
+      - priorityclasses
+    verbs:
+      - "get"
+      - "list"
+      - "watch"
+      - "create"
+      - "update"
+      - "patch"
+      - "delete"
