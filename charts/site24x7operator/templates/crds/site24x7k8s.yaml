@@ -322,7 +322,7 @@ spec:
                                 type: string
                               namespaces:
                                 type: string
-                              horizontal_pod_autoscalers:
+                              horizontalpodautoscalers:
                                 type: string
                               daemon_sets:
                                 type: string
