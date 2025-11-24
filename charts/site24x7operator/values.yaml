@@ -26,7 +26,7 @@ operator:
       # This sets the pull policy for images.
       pullPolicy: Always
       # Overrides the image tag whose default is the chart appVersion.
-      tag: "v1.0.0"
+      tag: "v1.0.1"
     securityContext:
       runAsUser: 0
     ports:
@@ -58,7 +58,7 @@ csiDriver:
       # This sets the pull policy for images.
       pullPolicy: Always
       # Overrides the image tag whose default is the chart appVersion.
-      tag: "v1.0.0"
+      tag: "v1.0.1"
     args:
       - server
     securityContext:
@@ -79,7 +79,7 @@ csiDriver:
       # This sets the pull policy for images.
       pullPolicy: Always
       # Overrides the image tag whose default is the chart appVersion.
-      tag: "v1.0.0"
+      tag: "v1.0.1"
     args:
       - provisioner
     securityContext:
