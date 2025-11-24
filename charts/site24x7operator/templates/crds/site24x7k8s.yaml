@@ -51,8 +51,6 @@ spec:
                         type: string
                       KUBE_STATE_METRICS_URL:
                         type: string
-                      site24x7_cluster_name:
-                        type: string
                       site24x7_agent_image:
                         type: string
                       site24x7_kube_state_metrics_image:
@@ -62,23 +60,23 @@ spec:
                       enabled:
                         description: Enable this to enable Kubernetes Monitoring.
                         type: boolean
-                      name_override:
+                      nameOverride:
                         type: string
-                      fullname_override:
+                      fullnameOverride:
                         type: string
-                      device_key:
+                      deviceKey:
                         type: string
-                      cluster_name:
+                      clusterName:
                         type: string
-                      open_shift:
+                      openShift:
                         type: boolean
-                      gke_auto_pilot:
+                      gkeAutoPilot:
                         type: boolean
                       http_proxy:
                         type: string
                       https_proxy:
                         type: string
-                      site24x7_agent:
+                      site24x7Agent:
                         type: object
                         properties:
                           create:
@@ -87,7 +85,7 @@ spec:
                             type: object
                             additionalProperties:
                               type: string
-                          update_strategy:
+                          updateStrategy:
                             type: object
                             properties:
                               type:
@@ -97,7 +95,7 @@ spec:
                                 properties:
                                   maxUnavailable:
                                     type: string
-                          node_selector:
+                          nodeSelector:
                             type: object
                             additionalProperties:
                               type: string
@@ -105,13 +103,13 @@ spec:
                             type: array
                             items:
                               type: object
-                          security_context:
+                          securityContext:
                             type: object
                             additionalProperties:
                               type: string
-                          apply_non_root_security_context:
+                          applyNonRootSecurityContext:
                             type: boolean
-                          apply_default_toleration:
+                          applyDefaultToleration:
                             type: boolean
                           image:
                             type: object
@@ -120,11 +118,11 @@ spec:
                                 type: string
                               name:
                                 type: string
-                              pull_policy:
+                              pullPolicy:
                                 type: string
                               tag:
                                 type: string
-                              image_pull_secrets:
+                              imagePullSecrets:
                                 type: array
                                 items:
                                   type: string
@@ -136,17 +134,17 @@ spec:
                                 properties:
                                   memory:
                                     type: string
-                          installer_name:
+                          installerName:
                             type: string
-                          extra_env:
+                          extraEnv:
                             type: array
                             items:
                               type: object
-                          apply_priority_class:
+                          applyPriorityClass:
                             type: boolean
-                          priority_class_value:
+                          priorityClassValue:
                             type: integer
-                      site24x7_kube_state_metrics:
+                      site24x7KubeStateMetrics:
                         type: object
                         properties:
                           create:
@@ -155,7 +153,7 @@ spec:
                             type: object
                             additionalProperties:
                               type: string
-                          update_strategy:
+                          updateStrategy:
                             type: object
                             properties:
                               type:
@@ -165,7 +163,7 @@ spec:
                                 properties:
                                   maxUnavailable:
                                     type: string
-                          node_selector:
+                          nodeSelector:
                             type: object
                             additionalProperties:
                               type: string
@@ -173,13 +171,13 @@ spec:
                             type: array
                             items:
                               type: object
-                          security_context:
+                          securityContext:
                             type: object
                             additionalProperties:
                               type: string
                           replicas:
                             type: integer
-                          apply_default_toleration:
+                          applyDefaultToleration:
                             type: boolean
                           image:
                             type: object
@@ -188,11 +186,11 @@ spec:
                                 type: string
                               name:
                                 type: string
-                              pull_policy:
+                              pullPolicy:
                                 type: string
                               tag:
                                 type: string
-                              image_pull_secrets:
+                              imagePullSecrets:
                                 type: array
                                 items:
                                   type: string
@@ -213,11 +211,11 @@ spec:
                                     type: string
                                   memory:
                                     type: string
-                          apply_priority_class:
+                          applyPriorityClass:
                             type: boolean
-                          priority_class_value:
+                          priorityClassValue:
                             type: integer
-                      site24x7_cluster_agent:
+                      site24x7ClusterAgent:
                         type: object
                         properties:
                           create:
@@ -228,7 +226,7 @@ spec:
                             type: object
                             additionalProperties:
                               type: string
-                          update_strategy:
+                          updateStrategy:
                             type: object
                             properties:
                               type:
@@ -238,7 +236,7 @@ spec:
                                 properties:
                                   maxUnavailable:
                                     type: string
-                          node_selector:
+                          nodeSelector:
                             type: object
                             additionalProperties:
                               type: string
@@ -246,11 +244,11 @@ spec:
                             type: array
                             items:
                               type: object
-                          security_context:
+                          securityContext:
                             type: object
                             additionalProperties:
                               type: string
-                          apply_default_toleration:
+                          applyDefaultToleration:
                             type: boolean
                           image:
                             type: object
@@ -261,9 +259,9 @@ spec:
                                 type: string
                               tag:
                                 type: string
-                              pull_policy:
+                              pullPolicy:
                                 type: string
-                              image_pull_secrets:
+                              imagePullSecrets:
                                 type: array
                                 items:
                                   type: string
@@ -277,23 +275,23 @@ spec:
                                     type: string
                                   memory:
                                     type: string
-                          extra_env:
+                          extraEnv:
                             type: array
                             items:
                               type: object
-                          apply_priority_class:
+                          applyPriorityClass:
                             type: boolean
-                          priority_class_value:
+                          priorityClassValue:
                             type: integer
-                          liveness_probe:
+                          livenessProbe:
                             type: object
                             additionalProperties:
                               type: string
-                          readiness_probe:
+                          readinessProbe:
                             type: object
                             additionalProperties:
                               type: string
-                      service_account:
+                      serviceAccount:
                         type: object
                         properties:
                           create:
@@ -304,45 +302,45 @@ spec:
                               type: string
                           name:
                             type: string
-                      site24x7_config_map:
+                      site24x7ConfigMap:
                         type: object
                         properties:
                           create:
                             type: boolean
-                          node_agent_version:
+                          nodeAgentVersion:
                             type: string
-                          cluster_agent_version:
+                          clusterAgentVersion:
                             type: string
-                          one_min:
+                          oneMin:
                             type: object
                             properties:
-                              pods:
+                              Pods:
                                 type: string
-                              nodes:
+                              Nodes:
                                 type: string
-                              namespaces:
+                              Namespaces:
                                 type: string
-                              horizontalpodautoscalers:
+                              HorizontalPodAutoscalers:
                                 type: string
-                              daemon_sets:
+                              DaemonSets:
                                 type: string
-                              deployments:
+                              Deployments:
                                 type: string
-                              endpoints:
+                              Endpoints:
                                 type: string
-                              replica_sets:
+                              ReplicaSets:
                                 type: string
-                              stateful_sets:
+                              StatefulSets:
                                 type: string
-                              services:
+                              Services:
                                 type: string
-                              pv:
+                              PV:
                                 type: string
-                              persistent_volume_claims:
+                              PersistentVolumeClaims:
                                 type: string
-                              jobs:
+                              Jobs:
                                 type: string
-                              ingresses:
+                              Ingresses:
                                 type: string
                           settings:
                             type: object
