@@ -2,6 +2,6 @@
 apiVersion: scheduling.k8s.io/v1
 kind: PriorityClass
 metadata:
-  name: {{ include "operator.name" . }}
+  name: {{ .Values.operator.name }}
 value: {{ .Values.operator.priorityClassValue }}
 {{- end }}
