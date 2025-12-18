@@ -35,7 +35,7 @@ spec:
         - operator: Exists
       {{- end }}
       {{- if .Values.operator.applyPriorityClass }}
-      priorityClassName: {{ include "operator.name" . }}
+      priorityClassName: {{ .Values.operator.name }}
       {{- end }}
       containers:
       - name: {{ .Values.operator.operatorContainer.name }}
