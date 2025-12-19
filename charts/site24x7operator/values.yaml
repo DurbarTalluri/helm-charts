@@ -53,9 +53,3 @@ operatorService:
       portNum: 443
     metricsPort:
       portNum: 80
-
-
-
-securityContext: {}
-
-resources: {}
