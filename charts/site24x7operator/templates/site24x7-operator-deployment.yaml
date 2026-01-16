@@ -66,4 +66,10 @@ spec:
             port: 8081
           initialDelaySeconds: 5
           periodSeconds: 10
+        volumeMounts:
+        - name: webhook-certs
+          mountPath: /etc/webhook
+      volumes:
+      - name: webhook-certs
+        emptyDir: {}  
           

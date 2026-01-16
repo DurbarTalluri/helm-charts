@@ -29,12 +29,20 @@ operator:
     imageRef:
       repository: durbar99/site24x7-operator
       # This sets the pull policy for images.
-      pullPolicy: Always
+      pullPolicy: PullIfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
       tag: "v1.1.0"
       imagePullSecrets: []
     securityContext:
-      runAsUser: 0
+      capabilities:
+        drop:
+          - ALL
+      seccompProfile:
+        type: RuntimeDefault
+      allowPrivilegeEscalation: false
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1001010001
     ports:
       tlsPortNum: 9443
       metricsPortNum: 80
