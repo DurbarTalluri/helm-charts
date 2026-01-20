@@ -100,12 +100,10 @@ spec:
                               type: string
                       resources:
                         type: object
-                        properties:
-                          limits:
-                            type: object
-                            properties:
-                              memory:
-                                type: string
+                        additionalProperties:
+                          type: object
+                          additionalProperties:
+                            type: string
                       installerName:
                         type: string
                       extraEnv:
@@ -158,21 +156,10 @@ spec:
                               type: string
                       resources:
                         type: object
-                        properties:
-                          requests:
-                            type: object
-                            properties:
-                              cpu:
-                                type: string
-                              memory:
-                                type: string
-                          limits:
-                            type: object
-                            properties:
-                              cpu:
-                                type: string
-                              memory:
-                                type: string
+                        additionalProperties:
+                          type: object
+                          additionalProperties:
+                            type: string
                   site24x7ClusterAgent:
                     type: object
                     properties:
@@ -219,14 +206,10 @@ spec:
                               type: string
                       resources:
                         type: object
-                        properties:
-                          limits:
-                            type: object
-                            properties:
-                              cpu:
-                                type: string
-                              memory:
-                                type: string
+                        additionalProperties:
+                          type: object
+                          additionalProperties:
+                            type: string
                       extraEnv:
                         type: array
                         items:
@@ -300,7 +283,7 @@ spec:
                   monitor_all_pods:
                     description: Monitor all pods in the cluster for APM.
                     type: boolean
-                  include_app_labels:
+                  includeAppLabels:
                     description: Include the application labels per namespace to be monitored by APM.
                     type: object
                     additionalProperties:
@@ -309,7 +292,7 @@ spec:
                         type: object
                         additionalProperties:
                           type: string
-                  exclude_app_labels:
+                  excludeAppLabels:
                     description: Exclude the application labels per namespace to be monitored by APM.
                     type: object
                     additionalProperties:
@@ -429,7 +412,7 @@ spec:
                 items:
                   type: object
                   additionalProperties: true
-              applyDefaultToleration:
+              applyDefaultTolerations:
                 type: boolean
               resource_base_name:
                 type: string
@@ -450,7 +433,7 @@ spec:
                   customOptions:
                     type: object
                     properties:
-                      Server:
+                      server:
                         type: boolean
                       applications:
                         type: boolean
