@@ -280,7 +280,7 @@ spec:
                 type: object
               apm:
                 properties:
-                  monitor_all_pods:
+                  monitorAllPods:
                     description: Monitor all pods in the cluster for APM.
                     type: boolean
                   includeAppLabels:
