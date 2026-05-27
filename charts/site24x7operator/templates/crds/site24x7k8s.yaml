@@ -434,6 +434,10 @@ spec:
                               type: string
                       deploymentStrategy:
                         type: string
+                      nodeSelector:
+                        type: object
+                        additionalProperties:
+                          type: string
                   agentsImagePullSecrets:
                     type: array
                     items:
@@ -463,6 +467,10 @@ spec:
                 type: boolean
               priorityClassValue:
                 type: integer
+              nodeSelector:
+                type: object
+                additionalProperties:
+                  type: string
               installationType:
                 description: describes the monitoring type and the metrics need to be collected
                 type: object
