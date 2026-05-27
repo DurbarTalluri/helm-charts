@@ -163,6 +163,12 @@ rules:
       - "update"
       - "patch"
   - apiGroups:
+      - "site24x7.com"
+    resources:
+      - "site24x7k8s/finalizers"
+    verbs:
+      - "update"
+  - apiGroups:
       - ""
     resources:
       - services
@@ -236,3 +242,17 @@ rules:
       - "update"
       - "patch"
       - "delete"
+  # For OpenShift SecurityContextConstraints
+  - apiGroups:
+      - security.openshift.io
+    resources:
+      - securitycontextconstraints
+    verbs:
+      - "get"
+      - "list"
+      - "watch"
+      - "create"
+      - "update"
+      - "patch"
+      - "delete"
+      - "use"
