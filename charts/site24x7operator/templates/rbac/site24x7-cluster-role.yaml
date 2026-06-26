@@ -242,6 +242,7 @@ rules:
       - "update"
       - "patch"
       - "delete"
+  {{- if .Values.openshift }}
   # For OpenShift SecurityContextConstraints
   - apiGroups:
       - security.openshift.io
@@ -256,3 +257,4 @@ rules:
       - "patch"
       - "delete"
       - "use"
+  {{- end }}

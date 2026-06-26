@@ -13,7 +13,7 @@ spec:
     singular: site24x7k8s
   scope: Namespaced
   versions:
-  - name: v1alpha1
+  - name: v1
     schema:
       openAPIV3Schema:
         description: Site24x7K8s is the Schema for the site24x7k8s API
@@ -321,6 +321,19 @@ spec:
                 type: object
               apm:
                 properties:
+                  webhook:
+                    type: object
+                    properties:
+                      monitorAllNamespaces:
+                        type: boolean
+                      includeNamespaces:
+                        type: array
+                        items:
+                          type: string
+                      excludeNamespaces:
+                        type: array
+                        items:
+                          type: string
                   monitorAllPods:
                     description: Monitor all pods in the cluster for APM.
                     type: boolean
