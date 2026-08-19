@@ -56,6 +56,8 @@ spec:
                     type: boolean
                   clusterName:
                     type: string
+                  gpuMonitoring:
+                    type: boolean
                   site24x7Agent:
                     type: object
                     properties:
@@ -82,6 +84,8 @@ spec:
                             properties:
                               maxUnavailable:
                                 type: string
+                      hostPID:
+                        type: boolean
                       nodeSelector:
                         type: object
                         additionalProperties:
@@ -427,6 +431,24 @@ spec:
                             type: array
                             items:
                               type: string
+                  ebpf:
+                    type: object
+                    properties:
+                      image:
+                        type: object
+                        properties:
+                          repository:
+                            type: string
+                          name:
+                            type: string
+                          pullPolicy:
+                            type: string
+                          tag:
+                            type: string
+                          imagePullSecrets:
+                            type: array
+                            items:
+                              type: string
                   dataExporter:
                     type: object
                     properties:
@@ -451,6 +473,11 @@ spec:
                         type: object
                         additionalProperties:
                           type: string
+                      extraEnv:
+                        type: array
+                        items:
+                          type: object
+                          x-kubernetes-preserve-unknown-fields: true
                   agentsImagePullSecrets:
                     type: array
                     items:
