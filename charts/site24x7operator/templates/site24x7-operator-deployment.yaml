@@ -5,6 +5,10 @@ metadata:
   namespace: {{ .Values.namespace }}
   labels:
     app: site24x7-operator
+  {{- if .Values.operator.annotations }}
+  annotations:
+    {{- toYaml .Values.operator.annotations | nindent 4 }}
+  {{- end }}
 spec:
   replicas: {{ .Values.operator.replicas }}
   selector:
