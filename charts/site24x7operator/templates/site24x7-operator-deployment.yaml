@@ -22,7 +22,7 @@ spec:
         app: site24x7-operator
       {{- if .Values.operator.annotations }}
       annotations:
-        {{- toYaml .Values.operator.annotations | nindent 4 }}
+        {{- toYaml .Values.operator.annotations | nindent 8 }}
       {{- end }}
     spec:
       nodeSelector:
