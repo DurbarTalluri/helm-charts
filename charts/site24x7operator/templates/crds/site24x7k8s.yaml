@@ -3,9 +3,9 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.14.0
-    site24x7.com/site24x7k8s-crd-version: "1.1.0"
-    site24x7.com/site24x7-operator-version: "1.1.0"
-    site24x7.com/apminsight-autoprofiler-version: "1.4.3"
+    site24x7.com/site24x7k8s-crd-version: 1.1.0
+    site24x7.com/site24x7-operator-version: 1.1.0
+    site24x7.com/apminsight-autoprofiler-version: 1.4.3
   name: site24x7k8s.site24x7.com
 spec:
   group: site24x7.com
