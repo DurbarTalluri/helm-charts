@@ -23,9 +23,9 @@ operator:
     type: "RollingUpdate"
   serviceAcctName: "site24x7-operator"
   annotations:
-    site24x7.com/site24x7k8s-crd-version: "1.1.0"
-    site24x7.com/site24x7-operator-version: "1.1.0"
-    site24x7.com/apminsight-autoprofiler-version: "1.4.3"
+    site24x7.com/site24x7k8s-crd-version: 1.1.0
+    site24x7.com/site24x7-operator-version: 1.1.0
+    site24x7.com/apminsight-autoprofiler-version: 1.4.3
   applyPriorityClass: true
   priorityClassValue: 12000000
   applyDefaultTolerations: true
